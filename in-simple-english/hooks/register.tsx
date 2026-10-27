@@ -128,13 +128,20 @@ export const register: Register = on => {
   })
 
   on('command.run', { command: 'simple-english' }, async $ => {
-    await $.ui.open({ id: PANE, title: TITLE })
+    const opened = await $.ui.open({ id: PANE, title: TITLE })
 
-    return { text: 'In Simple English pane opened.' }
+    return {
+      text: opened.isPlaced
+        ? 'In Simple English pane opened.'
+        : `In Simple English pane not shown: ${opened.reason}.`,
+    }
   })
 
   on('turn.start', async ($, e, next) => {
     if (e.agentId !== undefined) return next(e)
+    // Unasked, a surface places a pane only when it is wide; opened for the
+    // person's own prompt, it is placed at any width.
+    if (e.text !== '') void $.ui.open({ id: PANE, title: TITLE })
     // A continuation (empty text) keeps the user's message it continues.
     if (e.text !== '' || turnId === '') {
       prompt = e.text
