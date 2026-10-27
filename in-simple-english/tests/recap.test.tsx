@@ -76,3 +76,17 @@ test('a turn with no tool calls makes no model call', async ($, on) => {
   expect((await ui.find({ type: 'Text' }))?.text).toBe('No actions this turn. See the answer.')
   await ui.unmount()
 })
+
+test('a prompt opens the pane, a continuation does not', async ($, on) => {
+  const opened: string[] = []
+  on('ui.open', (_, e) => {
+    opened.push(e.id)
+    return { value: { isPlaced: true } }
+  })
+  on('turn.start', (_, e) => ({ turnId: e.turnId }))
+
+  await $.turn.start({ text: 'Fix it', turnId: 't3' })
+  await $.turn.start({ text: '', turnId: 't4' })
+
+  expect(opened).toEqual(['in-simple-english'])
+})

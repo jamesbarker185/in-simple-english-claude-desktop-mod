@@ -141,7 +141,7 @@ export const register: Register = on => {
     if (e.agentId !== undefined) return next(e)
     // Unasked, a surface places a pane only when it is wide; opened for the
     // person's own prompt, it is placed at any width.
-    if (e.text !== '') void $.ui.open({ id: PANE, title: TITLE })
+    if (e.text !== '') $.ui.open({ id: PANE, title: TITLE }).catch(() => undefined)
     // A continuation (empty text) keeps the user's message it continues.
     if (e.text !== '' || turnId === '') {
       prompt = e.text
