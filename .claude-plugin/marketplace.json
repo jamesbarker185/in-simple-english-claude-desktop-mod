@@ -1,0 +1,14 @@
+{
+  "name": "in-simple-english",
+  "owner": {
+    "name": "jamesbarker185"
+  },
+  "description": "One plain-English (ASD-STE100) recap of each Claude Code turn, in a side pane.",
+  "plugins": [
+    {
+      "name": "in-simple-english",
+      "source": "./in-simple-english",
+      "description": "Side pane with one ASD-STE100 Simplified Technical English recap of each turn."
+    }
+  ]
+}

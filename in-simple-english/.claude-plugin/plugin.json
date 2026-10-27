@@ -1,0 +1,9 @@
+{
+  "name": "in-simple-english",
+  "version": "0.2.0",
+  "description": "Side pane with one ASD-STE100 Simplified Technical English recap of each turn: what Claude did between your message and its answer.",
+  "author": {
+    "name": "jamesbarker185"
+  },
+  "types": "./types/index.d.ts"
+}
