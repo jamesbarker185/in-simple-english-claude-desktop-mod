@@ -34,15 +34,33 @@ How it stays quiet:
 - A turn you interrupt still gets a recap, labelled "Stopped by user".
 - Subagent turns are ignored. Only the main conversation counts.
 
-## Use
+## Install
 
-The mod is in [`in-simple-english/`](in-simple-english). Load it while you develop it:
+In the desktop app (Code tab): click **+** next to the prompt box, then
+**Plugins** → **Add marketplace**, enter
+`jamesbarker185/in-simple-english-claude-desktop-mod`, then **Add plugin**.
+
+At the prompt of a terminal session:
+
+```
+/plugin install in-simple-english --marketplace jamesbarker185/in-simple-english-claude-desktop-mod
+```
+
+From a shell:
+
+```sh
+claude plugin install in-simple-english --marketplace jamesbarker185/in-simple-english-claude-desktop-mod
+```
+
+The pane opens on your first message. To open it again, use `/simple-english`.
+The pane needs a local session (terminal or the desktop app's Code tab).
+A cloud session has no drawing surface for mod panes.
+
+To run it from a clone while you develop it:
 
 ```sh
 claude --plugin-dir ./in-simple-english
 ```
-
-The pane opens when the session starts. To open it again later, use `/simple-english`.
 
 ## Develop
 
